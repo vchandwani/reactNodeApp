@@ -37,3 +37,6 @@ Concurrently :  npm install --save concurrently
 
 In Client folder:
 Proxy middleware : npm install http-proxy-middleware
+
+In client: 
+npm install --save redux react-redux react-router-dom
