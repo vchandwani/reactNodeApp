@@ -34,3 +34,6 @@ npm install --save cookie-session
 React App : npx create-react-app client
 
 Concurrently :  npm install --save concurrently
+
+In Client folder:
+Proxy middleware : npm install http-proxy-middleware
