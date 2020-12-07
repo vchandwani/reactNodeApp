@@ -1,6 +1,6 @@
 React Node Express Application:
 
-cd server -> npm run dev
+Application execution -> npm run dev
 
 Deployment done using heroku and git
 
@@ -30,3 +30,7 @@ npm install --save nodemon
 
 Cookie Session:
 npm install --save cookie-session
+
+React App : npx create-react-app client
+
+Concurrently :  npm install --save concurrently
