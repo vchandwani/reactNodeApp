@@ -42,3 +42,5 @@ In client:
 npm install --save redux react-redux react-router-dom
 
 Material UI : https://material-ui.com/
+
+materialize css: npm install materialize-css@next

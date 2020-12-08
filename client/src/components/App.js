@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <div>
+        <div className="container">
           <Header />
           <Route path="/" exact component={Landing} />
           <Route path="/surveys" exact component={Dashboard} />
