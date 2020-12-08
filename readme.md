@@ -41,6 +41,7 @@ Proxy middleware : npm install http-proxy-middleware
 In client: 
 npm install --save redux react-redux react-router-dom
 npm install --save axios redux-thunk
+npm install --save redux-devtools-extension
 
 Material UI : https://material-ui.com/
 
