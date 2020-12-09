@@ -35,6 +35,8 @@ React App : npx create-react-app client
 
 Concurrently :  npm install --save concurrently
 
+Stripe : npm install --save stripe
+
 In Client folder:
 Proxy middleware : npm install http-proxy-middleware
 
