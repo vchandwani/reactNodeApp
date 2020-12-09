@@ -42,6 +42,8 @@ In client:
 npm install --save redux react-redux react-router-dom
 npm install --save axios redux-thunk
 npm install --save redux-devtools-extension
+Stripe Payment library:
+npm install react-stripe-checkout
 
 Material UI : https://material-ui.com/
 
