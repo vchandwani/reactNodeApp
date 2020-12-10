@@ -36,6 +36,7 @@ React App : npx create-react-app client
 Concurrently :  npm install --save concurrently
 
 Stripe : npm install --save stripe
+Send grid: npm install --save sendgrid
 
 In Client folder:
 Proxy middleware : npm install http-proxy-middleware
