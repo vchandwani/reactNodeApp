@@ -45,6 +45,7 @@ In client:
 npm install --save redux react-redux react-router-dom
 npm install --save axios redux-thunk
 npm install --save redux-devtools-extension
+npm install --save redux-form
 Stripe Payment library:
 npm install react-stripe-checkout
 
