@@ -2,6 +2,11 @@ React Node Express Application:
 
 Application execution -> npm run dev
 
+We can use npx to run ngrok and have it forward traffic to port 5000 without installing anything. To do this, open a brand new terminal and run:
+npx ngrok http 5000
+
+Add the url generated from ngrok to sendgrid mail setting : For eg => http://9277aa22a637.ngrok.io/api/surveys/webhooks
+
 Deployment done using heroku and git
 
 URL : https://nameless-tor-18279.herokuapp.com/ | https://git.heroku.com/nameless-tor-18279.git (git repo)
