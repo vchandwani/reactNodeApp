@@ -55,6 +55,7 @@ npm install --save redux-devtools-extension
 npm install --save redux-form
 Stripe Payment library:
 npm install react-stripe-checkout
+npm install react-vis // Charts
 
 Material UI : https://material-ui.com/
 
