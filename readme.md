@@ -43,6 +43,8 @@ Concurrently :  npm install --save concurrently
 Stripe : npm install --save stripe
 Send grid: npm install --save sendgrid
 
+npm install --save lodash path-parser
+
 In Client folder:
 Proxy middleware : npm install http-proxy-middleware
 
