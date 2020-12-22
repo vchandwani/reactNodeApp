@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSurveys } from '../../actions';
+import { fetchSurveys, deleteSurvey } from '../../actions';
+import MessageNotification from './MessageNotification';
 import { RadialChart } from 'react-vis';
 
 const renderChartData = (surveyData) => {
@@ -12,7 +13,9 @@ const renderChartData = (surveyData) => {
       chartData.push({angle : surveyData.no, label : 'No'});
     }
     return chartData;
-} 
+}
+
+
 class SurveyList extends Component {
   componentDidMount() {
     this.props.fetchSurveys();
@@ -21,14 +24,28 @@ class SurveyList extends Component {
   renderSurveys() {
     return this.props.surveys.reverse().map(survey => {
       const chartDataProcessed = renderChartData(survey);
+      
+      const confirmDelete = (id) => {
+        if (window.confirm("Do you really want to delete?")) {
+          this.props.deleteSurvey(id);
+        }
+      }
       return (
         <div className="card darken-1" key={survey._id}>
-          <div className="card-content">
-            <span className="card-title">{survey.title}</span>
+          <div className="card-content blue-grey white-text">
+            <span className="card-title">
+              <span className="left">{survey.title}</span>
+
+              <span className="right cursor" onClick={() => confirmDelete(survey._id)}>
+                <i className="material-icons">delete</i>
+              </span>
+            </span>
+          </div>
+          <div className="card-content blue-grey white-text">
             <p>
               {survey.body}
             </p>
-            <p className="right">
+            <p>
               Sent On: {new Date(survey.dateSent).toLocaleDateString()}
             </p>
           </div>
@@ -48,17 +65,23 @@ class SurveyList extends Component {
     });
   }
 
-  render() {
+  render() { 
     return (
       <div>
-        {this.renderSurveys()}
+        <div className="row">
+          {this.props.action && this.props.action.display && <MessageNotification actionState={this.props.action} /> }
+          <div className="col s12">
+            {this.renderSurveys()}
+          </div>
+        </div>
       </div>
+      
     );
   }
 }
 
-function mapStateToProps({ surveys }) {
-  return { surveys };
+function mapStateToProps({ surveys, auth, action }) {
+  return { surveys, auth, action };
 }
 
-export default connect(mapStateToProps, { fetchSurveys })(SurveyList);
+export default connect(mapStateToProps, { fetchSurveys, deleteSurvey })(SurveyList);
