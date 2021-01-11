@@ -1,24 +1,23 @@
-import React, { useState, useEffect} from 'react';
+import React, {Component} from 'react';
 import classNames from 'classnames';
+import { connect } from 'react-redux';
+import { resetAction } from '../../actions';
 
-const MessageNotification = ({actionState}) => {
-  const [isOpen, setIsOpen] = useState(actionState.display?actionState.display:false);
-
-  // const dispatch = useDispatch();
+class MessageNotification extends Component  {
   
-  // useEffect(() => {
-  //   dispatch(loadVehicles(apiResource));
-  // }, []);
-
-  return (
-    // isOpen && (
-      <div style={{margin:'10px 0'}} className={classNames('col s12 ' , actionState.action === 'success' ? 'green' : 'orange')}>
-        <span className="left">{actionState.msg}</span>
-        <a onClick={() => setIsOpen(false)} className="right">
-          <i className="material-icons white">close</i>
-        </a>
-      </div>
-    // )
-  );
+  render(){
+    return (
+      this.props.action.display && 
+      <div style={{margin:'10px 0', minHeight:20}} className={classNames('col s12',this.props.action.action === 'success' ? 'green' : 'orange')}>
+        <span className="left">{this.props.action.msg}</span>
+        <i onClick={() => this.props.resetAction()} className="right material-icons">close</i>
+       </div>
+    );
+  }
 };
-export default MessageNotification;
+
+function mapStateToProps({ action }) {
+  return { action };
+}
+
+export default connect(mapStateToProps ,{resetAction})(MessageNotification);

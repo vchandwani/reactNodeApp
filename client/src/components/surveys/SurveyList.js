@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSurveys, deleteSurvey } from '../../actions';
-import MessageNotification from './MessageNotification';
+import { fetchSurveys, deleteSurvey, resetAction } from '../../actions';
 import { RadialChart } from 'react-vis';
 
 const renderChartData = (surveyData) => {
+  console.log('surveyData');
+  console.log(surveyData);
     let chartData  = [];
     if(surveyData.yes){
       chartData.push({angle : surveyData.yes, label : 'Yes'});
@@ -20,7 +21,11 @@ class SurveyList extends Component {
   componentDidMount() {
     this.props.fetchSurveys();
   }
-
+  componentDidUpdate(){
+    if(this.props.action.reload){
+      this.props.fetchSurveys();
+    }
+  }
   renderSurveys() {
     return this.props.surveys.reverse().map(survey => {
       const chartDataProcessed = renderChartData(survey);
@@ -65,11 +70,10 @@ class SurveyList extends Component {
     });
   }
 
-  render() { 
+  render() {
     return (
       <div>
         <div className="row">
-          {this.props.action && this.props.action.display && <MessageNotification actionState={this.props.action} /> }
           <div className="col s12">
             {this.renderSurveys()}
           </div>
@@ -84,4 +88,4 @@ function mapStateToProps({ surveys, auth, action }) {
   return { surveys, auth, action };
 }
 
-export default connect(mapStateToProps, { fetchSurveys, deleteSurvey })(SurveyList);
+export default connect(mapStateToProps, { fetchSurveys, deleteSurvey, resetAction })(SurveyList);
