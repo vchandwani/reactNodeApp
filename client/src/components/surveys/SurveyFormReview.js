@@ -7,7 +7,7 @@ import * as actions from '../../actions';
 
 
 //history passed via withRouter
-const SurveyReview = ({onCancel, formValues, submitSurvey, history}) => {
+const SurveyReview = ({onCancel, formValues, submitSurvey, history, credits}) => {
   
   const reviewFields =_.map(FIELDS, ({label,name}) => {
     return (
@@ -27,7 +27,7 @@ const SurveyReview = ({onCancel, formValues, submitSurvey, history}) => {
       <button className="yellow darken-3 white-text btn-flat" onClick={onCancel}>
         Back
       </button>
-      <button className="green btn-flat white-text right" onClick={() => submitSurvey(formValues, history)} >
+      <button disabled={credits < 1} className="green btn-flat white-text right" onClick={() => submitSurvey(formValues, history)} >
         Send SurveyReview
         <i className="material-icons right">email</i>
       </button>
@@ -36,7 +36,7 @@ const SurveyReview = ({onCancel, formValues, submitSurvey, history}) => {
 }
 
 function mapStateToProps(state){ 
-  return {formValues : state.form.surveyForm.values};
+  return {formValues : state.form.surveyForm.values, credits: state.auth.credits};
 }
 
 export default connect(mapStateToProps, actions)(withRouter(SurveyReview));

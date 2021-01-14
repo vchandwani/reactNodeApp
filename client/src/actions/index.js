@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_SURVEYS, DELETE_SURVEY, RESET_ACTION, RESET_LOAD } from './types';
+import { FETCH_USER, FETCH_SURVEYS, DELETE_SURVEY, RESET_ACTION, RESET_LOAD, LOAD_CREDIT } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -36,4 +36,7 @@ export const resetAction = () => async dispatch => {
 
 export const resetLoad = () => async dispatch => {
   dispatch({ type: RESET_LOAD, payload:{reload:false} });
+};
+export const loadCredit = () => async dispatch => {
+  dispatch({ type: LOAD_CREDIT, payload:{msg:'Kindly load credit',display:true,action:'',reload:false,_id:''} });
 };
