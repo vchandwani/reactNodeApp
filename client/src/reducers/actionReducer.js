@@ -1,6 +1,6 @@
 import { DELETE_SURVEY, RESET_ACTION, RESET_LOAD} from '../actions/types';
 
-export default function(state = {msg: '', action:'', display: false,reload:false}, action) {
+export default function(state = {msg: '', action:'', display: false,reload:false, _id: ''}, action) {
   switch (action.type) {
     case DELETE_SURVEY:
       return action.payload;

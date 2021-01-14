@@ -27,12 +27,11 @@ export const deleteSurvey = id => async dispatch => {
 
 export const fetchSurveys = () => async dispatch => {
   const res = await axios.get('/api/surveys');
-
   dispatch({ type: FETCH_SURVEYS, payload: res.data });
 };
 
 export const resetAction = () => async dispatch => {
-  dispatch({ type: RESET_ACTION, payload:{msg:'',display:false,action:'',reload:false} });
+  dispatch({ type: RESET_ACTION, payload:{msg:'',display:false,action:'',reload:false,_id:''} });
 };
 
 export const resetLoad = () => async dispatch => {
